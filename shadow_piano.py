@@ -81,7 +81,7 @@ def detect_shadows_and_play_notes(frame, detection_area, osc_client, honey_pot):
         x_end = int((j + 1) * cell_width)
         cell = detection_region[:, x_start:x_end]
         mean_val = np.mean(cell)
-        key_number = j + 1
+        key_number = j + 21
         note = key_map[key_number]
 
         if mean_val < dynamic_threshold:
@@ -202,10 +202,10 @@ if __name__ == "__main__":
 
     # Define honey pot area (maintain ratios)
     honey_pot = (
-        int(frame_width * 0.9),
-        int(frame_height * 0.1),
-        frame_width - 1,
-        int(frame_height * 0.2),
+        int(1), # x upper left
+        int(frame_height * 0.2), # y upper left
+        int(frame_width * 0.2), # x lower right
+        int(frame_height * 0.5), # y lower right
     )
 
     key_held(osc_client, detection_area, honey_pot)
