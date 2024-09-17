@@ -5,7 +5,6 @@ from rich.console import Console
 from rich.table import Table
 from rich.text import Text
 from pythonosc import udp_client
-from tkinter import Tk  # For getting screen dimensions
 
 console = Console()
 osc_client = udp_client.SimpleUDPClient(
@@ -39,12 +38,15 @@ def resize_with_aspect_ratio(image, width=None, height=None, inter=cv2.INTER_ARE
         return image
 
     if width is None:
+        # Calculate the ratio of the height and construct the dimensions
         r = height / float(h)
         dim = (int(w * r), height)
     else:
+        # Calculate the ratio of the width and construct the dimensions
         r = width / float(w)
         dim = (width, int(h * r))
 
+    # Resize the image
     return cv2.resize(image, dim, interpolation=inter)
 
 
@@ -124,19 +126,20 @@ def key_held(osc_client, detection_area, honey_pot):
         print("Error: Could not open video capture")
         return
 
-    # Get screen dimensions
-    root = Tk()
-    screen_width = root.winfo_screenwidth()
-    screen_height = root.winfo_screenheight()
-    root.destroy()
+    # Use hardcoded screen dimensions (e.g., Full HD resolution)
+    screen_width = 1920
+    screen_height = 1080
 
     # Set OpenCV windows to be resizable
     cv2.namedWindow("Full Frame with Detection and Honey Pot Areas", cv2.WINDOW_NORMAL)
     cv2.namedWindow("Shadow Detection", cv2.WINDOW_NORMAL)
 
-    # Optionally, maximize the windows (uncomment if desired)
-    # cv2.setWindowProperty("Full Frame with Detection and Honey Pot Areas", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
-    # cv2.setWindowProperty("Shadow Detection", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+    # Optionally, set the window size to a proportion of the screen size
+    # For example, make the window 80% of the screen width and height
+    window_width = int(screen_width * 0.8)
+    window_height = int(screen_height * 0.8)
+    cv2.resizeWindow("Full Frame with Detection and Honey Pot Areas", window_width, window_height)
+    cv2.resizeWindow("Shadow Detection", window_width, window_height)
 
     while cap.isOpened():
         ret, frame = cap.read()
@@ -163,16 +166,12 @@ def key_held(osc_client, detection_area, honey_pot):
             frame, detection_area, osc_client, honey_pot
         )
 
-        # Resize frames to take up majority of the screen
-        desired_width = int(screen_width * 0.8)
-        frame_resized = resize_with_aspect_ratio(frame, width=desired_width)
-        processed_frame_resized = resize_with_aspect_ratio(
-            processed_frame, width=desired_width
-        )
+        # Resize frames to fill the window size
+        frame_resized = cv2.resize(frame, (window_width, window_height))
+        processed_frame_resized = cv2.resize(processed_frame, (window_width, window_height))
 
-        # Show the full frame
+        # Show the frames
         cv2.imshow("Full Frame with Detection and Honey Pot Areas", frame_resized)
-        # Zoomed-in detection area
         cv2.imshow("Shadow Detection", processed_frame_resized)
 
         if cv2.waitKey(1) & 0xFF == ord("q"):
