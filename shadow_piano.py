@@ -24,7 +24,7 @@ note_names = (
     + ["C8"]
 )
 
-key_map = {idx + 1: note for idx, note in enumerate(note_names)}
+key_map = {idx + 21: note for idx, note in enumerate(note_names)}
 column_states = {idx: False for idx in range(88)}
 honey_pot_warning_printed = False  # Initialize the warning flag
 
