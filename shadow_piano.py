@@ -5,29 +5,23 @@ from rich.console import Console
 from rich.table import Table
 from rich.text import Text
 from pythonosc import udp_client
+from note_names import note_names, note_midi
 
 console = Console()
 osc_client = udp_client.SimpleUDPClient(
     "127.0.0.1", 57120
 )  # Adjust IP and port as needed
 
-# Define all 88 piano keys
-note_names = (
-    ["A0", "A#0", "B0"]
-    + ["C1", "C#1", "D1", "D#1", "E1", "F1", "F#1", "G1", "G#1", "A1", "A#1", "B1"]
-    + ["C2", "C#2", "D2", "D#2", "E2", "F2", "F#2", "G2", "G#2", "A2", "A#2", "B2"]
-    + ["C3", "C#3", "D3", "D#3", "E3", "F3", "F#3", "G3", "G#3", "A3", "A#3", "B3"]
-    + ["C4", "C#4", "D4", "D#4", "E4", "F4", "F#4", "G4", "G#4", "A4", "A#4", "B4"]
-    + ["C5", "C#5", "D5", "D#5", "E5", "F5", "F#5", "G5", "G#5", "A5", "A#5", "B5"]
-    + ["C6", "C#6", "D6", "D#6", "E6", "F6", "F#6", "G6", "G#6", "A6", "A#6", "B6"]
-    + ["C7", "C#7", "D7", "D#7", "E7", "F7", "F#7", "G7", "G#7", "A7", "A#7", "B7"]
-    + ["C8"]
-)
+# NB note_names defined in note_names.py that indicate piano key left to right
 
-key_map = {idx + 21: note for idx, note in enumerate(note_names)}
+# key_map = {idx + 21: note for idx, note in enumerate(note_names)}
+col2note_map = {idx: note for idx, note in enumerate(note_names)}
+col2midi_map = {idx: midi_pitch for idx, midi_pitch in enumerate(note_midi)}
 column_states = {idx: False for idx in range(88)}
 honey_pot_warning_printed = False  # Initialize the warning flag
 
+print(col2note_map)
+print(col2midi_map)
 
 def resize_with_aspect_ratio(image, width=None, height=None, inter=cv2.INTER_AREA):
     """Resize an image while maintaining aspect ratio."""
@@ -81,21 +75,22 @@ def detect_shadows_and_play_notes(frame, detection_area, osc_client, honey_pot):
         x_end = int((j + 1) * cell_width)
         cell = detection_region[:, x_start:x_end]
         mean_val = np.mean(cell)
-        key_number = j + 21
-        note = key_map[key_number]
+        note = col2note_map[j]
+        midi_pitch = col2midi_map[j]
 
-        if mean_val < dynamic_threshold:
+        if mean_val < dynamic_threshold: ####### compute L2 absolute distance instead
             if not column_states[j]:
                 column_states[j] = True
                 # Send OSC message for note on
-                osc_client.send_message("/note_on", [key_number])
-                print(f"Note On: {note} ({key_number})")
+                osc_client.send_message("/note_on_col", [j])
+                osc_client.send_message("/note_on", [midi_pitch])
+                print(f"Note On: {note} ({midi_pitch})")
         else:
             if column_states[j]:
                 column_states[j] = False
                 # Send OSC message for note off
-                osc_client.send_message("/note_off", [key_number])
-                print(f"Note Off: {note} ({key_number})")
+                osc_client.send_message("/note_off", [midi_pitch])
+                print(f"Note Off: {note} ({midi_pitch})")
 
         # Draw the grid and note labels
         cv2.rectangle(
