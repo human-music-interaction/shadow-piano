@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 819.0, 100.0, 577.0, 828.0 ],
+		"rect" : [ 262.0, 100.0, 850.0, 828.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,6 +40,42 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-15",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 389.5, 134.0, 83.0, 22.0 ],
+					"text" : "r midipitchtest"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 224.125, 403.0, 83.0, 22.0 ],
+					"text" : "r midipitchtest"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-5",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 501.5, 167.0, 58.0, 22.0 ],
+					"text" : "loadbang"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-2",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -57,7 +93,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 68.125, 320.0, 210.0, 74.0 ],
+					"patching_rect" : [ 102.625, 321.0, 210.0, 74.0 ],
 					"text" : "Map MIDI pitch\nto left/right"
 				}
 
@@ -103,8 +139,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 28.0, 271.0, 85.0, 22.0 ],
-					"text" : "send midipitch"
+					"patching_rect" : [ 28.0, 271.0, 105.0, 22.0 ],
+					"text" : "send midipitchtest"
 				}
 
 			}
@@ -115,7 +151,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 127.125, 402.0, 55.0, 22.0 ],
+					"patching_rect" : [ 161.625, 403.0, 55.0, 22.0 ],
 					"text" : "r column"
 				}
 
@@ -222,7 +258,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 146.625, 477.0, 106.0, 33.0 ],
+					"patching_rect" : [ 181.125, 478.0, 106.0, 33.0 ],
 					"text" : "panner\nleft (0) --> (1) right"
 				}
 
@@ -259,8 +295,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 73.125, 472.0, 50.0, 35.0 ],
-					"text" : "0.91954"
+					"patching_rect" : [ 107.625, 473.0, 50.0, 35.0 ],
+					"text" : "0.781609"
 				}
 
 			}
@@ -271,7 +307,7 @@
 					"numinlets" : 6,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 127.125, 437.0, 97.0, 22.0 ],
+					"patching_rect" : [ 161.625, 438.0, 97.0, 22.0 ],
 					"text" : "scale 0. 87. 0. 1."
 				}
 
@@ -296,8 +332,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 80.625, 525.0, 50.0, 35.0 ],
-					"text" : "0.91954"
+					"patching_rect" : [ 115.125, 526.0, 50.0, 35.0 ],
+					"text" : "0.781609"
 				}
 
 			}
@@ -356,7 +392,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "float" ],
-					"patching_rect" : [ 136.625, 525.0, 53.0, 22.0 ],
+					"patching_rect" : [ 171.125, 526.0, 53.0, 22.0 ],
 					"text" : "* 1.5707"
 				}
 
@@ -395,7 +431,7 @@
 					"orientation" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 127.125, 477.0, 156.0, 35.0 ],
+					"patching_rect" : [ 161.625, 478.0, 156.0, 35.0 ],
 					"size" : 1.0
 				}
 
@@ -572,7 +608,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 327.125, 392.0, 50.0, 22.0 ],
-					"text" : "50 0"
+					"text" : "68 0"
 				}
 
 			}
@@ -796,7 +832,7 @@
 					"mode" : 0,
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 58.375, 311.0, 232.25, 265.0 ],
+					"patching_rect" : [ 92.875, 312.0, 232.25, 265.0 ],
 					"proportion" : 0.5
 				}
 
@@ -841,6 +877,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-3", 0 ],
 					"source" : [ "obj-14", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-16", 0 ],
+					"source" : [ "obj-15", 0 ]
 				}
 
 			}
@@ -1043,6 +1086,22 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-22", 0 ],
+					"order" : 1,
+					"source" : [ "obj-5", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-25", 0 ],
+					"order" : 0,
+					"source" : [ "obj-5", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-38", 0 ],
 					"source" : [ "obj-53", 0 ]
 				}
@@ -1076,6 +1135,13 @@
 				}
 
 			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-48", 0 ],
+					"source" : [ "obj-9", 0 ]
+				}
+
+			}
  ],
 		"parameters" : 		{
 			"obj-12" : [ "live.gain~", "live.gain~", 0 ],
@@ -1095,21 +1161,21 @@
 		"dependency_cache" : [ 			{
 				"name" : "Pianoteq 8.maxsnap",
 				"bootpath" : "~/Documents/Max 8/Snapshots",
-				"patcherrelativepath" : "../../../Max 8/Snapshots",
+				"patcherrelativepath" : "../../../../Max 8/Snapshots",
 				"type" : "mx@s",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "Pianoteq 8[1].maxsnap",
 				"bootpath" : "~/Documents/Max 8/Snapshots",
-				"patcherrelativepath" : "../../../Max 8/Snapshots",
+				"patcherrelativepath" : "../../../../Max 8/Snapshots",
 				"type" : "mx@s",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "Pianoteq 8_20240415.maxsnap",
 				"bootpath" : "~/Documents/Max 8/Snapshots",
-				"patcherrelativepath" : "../../../Max 8/Snapshots",
+				"patcherrelativepath" : "../../../../Max 8/Snapshots",
 				"type" : "mx@s",
 				"implicit" : 1
 			}
