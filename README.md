@@ -4,7 +4,8 @@
 
 ## Install
 
-- create a virtual environment with python3.
+- Recommended Python 3.12
+- create a virtual environment
 - In the activated virtual environment, run `pip install -r requirements.txt`
 
 ## Run
