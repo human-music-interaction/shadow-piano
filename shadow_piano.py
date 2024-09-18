@@ -197,10 +197,10 @@ if __name__ == "__main__":
 
     # Define honey pot area (maintain ratios)
     honey_pot = (
-        int(1), # x upper left
-        int(frame_height * 0.2), # y upper left
-        int(frame_width * 0.2), # x lower right
-        int(frame_height * 0.5), # y lower right
+        int(frame_width * 0.4), # x upper left
+        int(frame_height * 0.01), # y upper left
+        int(frame_width * 0.6), # x lower right
+        int(frame_height * 0.2), # y lower right
     )
 
     key_held(osc_client, detection_area, honey_pot)
