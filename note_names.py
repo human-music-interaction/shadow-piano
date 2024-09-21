@@ -19,6 +19,11 @@ randomized_raw = "11	70	49	41	56	14	42	67	85	58	80	16	65	55	72	61	63" + \
     "	7	44	31	21	40	1	59	82	50	87	35	51	78	2	33	83	79	37	22	45" + \
     "	86	73	75	30	8	24	54	12	60	77	84"
 
+# randomized_raw = ""
+# for i in range(1,88):
+#     randomized_raw += str(i) + "\t"
+# randomized_raw += str(88)
+
 # remove tab
 randomized_notes = randomized_raw.split('\t')
 

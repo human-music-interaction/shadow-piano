@@ -74,7 +74,11 @@ def detect_shadows_and_play_notes(frame, detection_area, osc_client, honey_pot):
         x_start = int(j * cell_width)
         x_end = int((j + 1) * cell_width)
         cell = detection_region[:, x_start:x_end]
+        # print(cell)
+        # print(type(cell))
         mean_val = np.mean(cell)
+        # print(f"mean_val, {mean_val}")
+        # jhgk("ending now")
         note = col2note_map[j]
         midi_pitch = col2midi_map[j]
 
@@ -197,10 +201,24 @@ if __name__ == "__main__":
 
     # Define honey pot area (maintain ratios)
     honey_pot = (
-        int(frame_width * 0.4), # x upper left
-        int(frame_height * 0.01), # y upper left
-        int(frame_width * 0.6), # x lower right
-        int(frame_height * 0.2), # y lower right
+        # # uncomment for top center
+        # int(frame_width * 0.4), # x upper left
+        # int(frame_height * 0.01), # y upper left
+        # int(frame_width * 0.6), # x lower right
+        # int(frame_height * 0.2), # y lower right
+
+        # # ucomment for middle (right above dection region)
+        # int(frame_width * 0.45),
+        # int(frame_height * 0.4),
+        # int(frame_width * 0.55),
+        # int(frame_height * 0.5),
+
+        # uncomment for left (right above decteion region)
+        int(frame_width * 0.01),
+        int(frame_height * 0.4),
+        int(frame_width * 0.1),
+        int(frame_height * 0.5)
+
     )
 
     key_held(osc_client, detection_area, honey_pot)
