@@ -350,8 +350,8 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 70.75, 362.0, 100.0, 22.0 ],
-					"text" : "r columnadjusted"
+					"patching_rect" : [ 70.75, 362.0, 55.0, 22.0 ],
+					"text" : "r column"
 				}
 
 			}
@@ -1279,8 +1279,8 @@
 			}
 , 			{
 				"name" : "noteorder.txt",
-				"bootpath" : "~/Documents/Research/FallArtShow-2024/shadowpiano/shadow-piano",
-				"patcherrelativepath" : ".",
+				"bootpath" : "~/Documents/Research/FallArtShow-2024/MediaPipePiano",
+				"patcherrelativepath" : "../../MediaPipePiano",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
